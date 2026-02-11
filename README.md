@@ -35,3 +35,5 @@ Pipeline: Executa estágios de Build, Testes e Security Scan (vulnerabilidades) 
 
 Telemetria: Baseada nos três pilares (Métricas, Logs e Traces) para rastreabilidade total de falhas.
 
+📺 Vídeo Pitch (Demonstração)
+Assista à demonstração prática do HPA escalando os pods sob carga: 👉 https://youtu.be/UOy0Hq1RYeU
