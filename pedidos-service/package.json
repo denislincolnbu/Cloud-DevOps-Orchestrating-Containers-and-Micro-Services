@@ -1,0 +1,8 @@
+{
+  "name": "pedidos-service",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "build": "mkdir -p dist && echo 'console.log(\"Serviço Pedidos Ativo\")' > dist/main.js"
+  }
+}

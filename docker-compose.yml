@@ -1,0 +1,33 @@
+version: '3.8'
+services:
+  # Banco de Dados PostgreSQL [cite: 26]
+  postgres-db:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: pedidos_db
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-admin123}
+    networks:
+      - veloz-network
+
+  # Mensageria (Justificada no seu relatório) [cite: 27, 185]
+  rabbitmq:
+    image: rabbitmq:3-management
+    ports:
+      - "15672:15672" # Painel de controle
+    networks:
+      - veloz-network
+
+  pedidos-service:
+    build: ./pedidos-service
+    environment:
+      DB_URL: postgresql://postgres:admin123@postgres-db:5432/pedidos_db
+      RABBITMQ_URL: amqp://rabbitmq
+    depends_on:
+      - postgres-db
+      - rabbitmq
+    networks:
+      - veloz-network
+
+networks:
+  veloz-network:
+    driver: bridge
